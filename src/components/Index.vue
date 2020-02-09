@@ -1,18 +1,11 @@
 <template>
-  <div>
-      <router-view></router-view>
-      <Foot :routerName="currentRouter"/>
-  </div>
+    <router-view></router-view>
 </template>
 
 <script>
-
-import Foot from './Foot'
-
 export default {
   name: 'Index',
   components: {
-    Foot
   },
   data(){
     return{
@@ -43,4 +36,8 @@ export default {
   #app{margin: 0;padding: 0}
   a{text-decoration: none}
   p{margin: 0}
+  .el-card{margin-top: 15px}
+  .el-table{margin-top: 15px}
+  #app, body, html{min-width: 1380px;}
+  .el-pagination{margin-top: 15px}
 </style>
