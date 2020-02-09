@@ -42,9 +42,11 @@
               <el-button type="danger" @click="deleteUser(scope.row)" size="mini">
                 <i class="el-icon-delete"></i>
               </el-button>
-              <el-button type="warning" size="mini">
-                <i class="el-icon-setting"></i>
-              </el-button>
+              <el-tooltip class="item" effect="dark" content="权限分配" :enterable="false" placement="top">
+                <el-button type="warning" size="mini">
+                  <i class="el-icon-setting"></i>
+                </el-button>
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
@@ -140,18 +142,19 @@ export default {
           cancelButtonText: "取消",
           type: "warning"
         })
-        .then(() => {
-          this.$axios.delete(`/users/${id}`).then(res=>{
-            const { data } = res;
-            if(data.meta.status != 200) return this.$message.error(data.meta.msg)
-            this.$message.success(data.meta.msg);
-            _this.getUseParams.pagenum = 1;
-            _this.getUserList()
+          .then(() => {
+            this.$axios.delete(`/users/${id}`).then(res => {
+              const { data } = res;
+              if (data.meta.status != 200)
+                return this.$message.error(data.meta.msg);
+              this.$message.success(data.meta.msg);
+              _this.getUseParams.pagenum = 1;
+              _this.getUserList();
+            });
           })
-        })
-        .catch(() => {
-          this.$message.info("已取消删除")
-        });
+          .catch(() => {
+            this.$message.info("已取消删除");
+          });
       }
     };
   },

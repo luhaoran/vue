@@ -37,7 +37,8 @@ export default {
   a{text-decoration: none}
   p{margin: 0}
   .el-card{margin-top: 15px}
-  .el-table{margin-top: 15px}
+  .el-table{margin-top: 15px;font-size: 12px}
   #app, body, html{min-width: 1380px;}
   .el-pagination{margin-top: 15px}
+  .flexCenter{display: flex;align-items: center;}
 </style>
