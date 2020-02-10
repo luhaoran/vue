@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import vueRouter from 'vue-router';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import Login from './components/Login'
 import Home from './components/Home'
 import Users from './components/Users'
@@ -61,7 +63,10 @@ const router = new vueRouter({
   ]             
 })
 
+NProgress.configure({})
+
 router.beforeEach((to,from,next)=>{
+  NProgress.start()
   const token = sessionStorage.getItem("token")
   if(to.path == '/login' && token){
     return next("/home");
@@ -71,6 +76,10 @@ router.beforeEach((to,from,next)=>{
   
   if(!token) return next("/login");
   next();
+})
+
+router.afterEach(()=>{
+  NProgress.done()
 })
 
 export default  router
