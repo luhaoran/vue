@@ -5,8 +5,9 @@ import Index from './components/Index';
 import router from './router.config'; //路由
 import store from './store.config' //vuex
 import axios from 'axios'
+import ZKTable from 'vue-table-with-tree-grid'
 
-
+Vue.use(ZKTable)
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = "https://www.liulongbin.top:8888/api/private/v1"
 
